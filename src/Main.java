@@ -15,6 +15,9 @@ public class Main extends Application {
 
 
 
+        //TEST GITU
+
+
 
     // sachovnice rozmery
     private static final int TILE_SIZE = 75;
@@ -158,7 +161,7 @@ public class Main extends Application {
 
         updateSquareVisual(square, row, col);
 
-        // Reakce na kliknutí myší na políčko
+
 
 
 
@@ -168,7 +171,7 @@ public class Main extends Application {
         return square;
     }
 
-    // Logika kliknutí a pohybování figurkou
+    // logika kliknuti a pohybu figurky
     private void handleSquareClick(int row, int col) {
         if (selectedRow == -1 && selectedCol == -1) {
 
@@ -218,7 +221,7 @@ public class Main extends Application {
         }
     }
 
-    // Aktualizace grafické podoby políčka (barva + obrázek figurky)
+    // aktualizace grafiky policka - policko + figurka
     private void updateSquareVisual(StackPane square, int row, int col) {
         square.getChildren().clear();
 
