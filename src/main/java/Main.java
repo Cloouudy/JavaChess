@@ -1,3 +1,4 @@
+
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -105,7 +106,7 @@ public class Main extends Application {
 
         Scene scene = new Scene(grid, totalWidth, totalHeight);
 
-        primaryStage.setTitle("Java Chess - Klikací šachovnice");
+        primaryStage.setTitle("Java Chess");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
