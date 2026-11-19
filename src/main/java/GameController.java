@@ -27,8 +27,6 @@ public class GameController {
 
     // Prvky napojene z GameView.fxml (Scene Builder)
     @FXML private StackPane boardContainer;
-    @FXML private Label whitePlayerLabel;
-    @FXML private Label blackPlayerLabel;
     @FXML private Label statusLabel;
     @FXML private Button resignButton;
     @FXML private ListView<String> moveHistoryList;
@@ -67,6 +65,8 @@ public class GameController {
     private final List<String> sanMoves = new ArrayList<>();
     private String gameResult = "*";
 
+
+    // sachovnice
     @FXML
     public void initialize() {
         initializeBoardData();
@@ -83,10 +83,9 @@ public class GameController {
         updateGameStatus();
     }
 
-    public void setPlayerNames(String whiteName, String blackName) {
-        whitePlayerLabel.setText("♔ " + whiteName);
-        blackPlayerLabel.setText("♚ " + blackName);
-    }
+
+
+
 
     private void buildChessGrid() {
         grid = new GridPane();
@@ -135,6 +134,9 @@ public class GameController {
         }
     }
 
+
+
+
     // Dynamicky prepocet velikosti sachovnice podle okna
     private void resizeBoard() {
         double available = Math.min(boardContainer.getWidth(), boardContainer.getHeight()) - 30;
@@ -157,15 +159,20 @@ public class GameController {
         }
     }
 
+
+
+    // Resign button
     @FXML
     private void onResignClick() throws Exception{
         System.out.println("Resign");
         resign = true;
 
-
         updateGameStatus();
     }
 
+
+
+    // Zpatky do menu button
     @FXML
     private void onBackToMenuClick() throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
@@ -173,9 +180,14 @@ public class GameController {
         stage.setScene(new Scene(root));
     }
 
+
+
     // Logika hry
 
+    // inicializace sachovnice (figurky)
     private void initializeBoardData() {
+
+        // tmave
         boardState[0][0] = new Rook(false);
         boardState[0][1] = new Knight(false);
         boardState[0][2] = new Bishop(false);
@@ -185,11 +197,13 @@ public class GameController {
         boardState[0][6] = new Knight(false);
         boardState[0][7] = new Rook(false);
 
+        // pawn cyklus
         for (int col = 0; col < BOARD_SIZE; col++) {
             boardState[1][col] = new Pawn(false);
             boardState[6][col] = new Pawn(true);
         }
 
+        // svetle
         boardState[7][0] = new Rook(true);
         boardState[7][1] = new Knight(true);
         boardState[7][2] = new Bishop(true);
@@ -200,6 +214,7 @@ public class GameController {
         boardState[7][7] = new Rook(true);
     }
 
+    // jednotlive policko
     private StackPane createSquare(int row, int col) {
         StackPane square = new StackPane();
         square.setPrefSize(currentTileSize, currentTileSize);
@@ -208,6 +223,9 @@ public class GameController {
         return square;
     }
 
+
+
+    // kliknuti na policko
     private void handleSquareClick(int row, int col) {
         if (gameOver) return;
 
@@ -237,6 +255,8 @@ public class GameController {
         }
     }
 
+
+    // vybrani figurky
     private void selectPiece(int row, int col) {
         clearSelection();
         selectedRow = row;
@@ -252,6 +272,8 @@ public class GameController {
         refreshBoard();
     }
 
+
+    // clear selekce
     private void clearSelection() {
         selectedRow = -1;
         selectedCol = -1;
@@ -259,6 +281,7 @@ public class GameController {
         captureHighlights = new boolean[BOARD_SIZE][BOARD_SIZE];
     }
 
+    // tah
     private void playMove(int startRow, int startCol, int targetRow, int targetCol, String promotion) {
         Piece movingPiece = boardState[startRow][startCol];
         Piece capturedPiece = boardState[targetRow][targetCol];
@@ -329,10 +352,18 @@ public class GameController {
             String promo = promotion != null ? "=" + promotion.charAt(0) : "";
             return prefix + targetSquare + promo;
         }
-        String pieceLetter = piece instanceof Knight ? "N"
-                : piece instanceof Bishop ? "B"
-                : piece instanceof Rook ? "R"
-                : piece instanceof Queen ? "Q" : "K";
+
+
+        String pieceLetter = switch (piece) {
+            case Knight k -> "K";
+            case Queen q -> "Q";
+            case Bishop b -> "B";
+            case Rook r -> "R";
+            default -> "K";
+
+        };
+
+
         return pieceLetter + (isCapture ? "x" : "") + targetSquare;
     }
 

@@ -2,21 +2,41 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="660.0" prefWidth="960.0" spacing="20.0" style="-fx-background-color: #302e2b;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenuController">
-    <padding>
-        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-    </padding>
+<StackPane prefHeight="900.0" prefWidth="900.0" style="-fx-background-color: #170404; -fx-background-image: url('mainMenuBackground.png'); -fx-background-size: contain; -fx-background-position: center bottom; -fx-background-repeat: no-repeat;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenuController">
 
-          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="228.0" prefWidth="508.0" text="JAVA CHESS" textFill="WHITE">
-        <font>
-            <Font name="System Bold" size="42.0" />
-        </font>
-    </Label>
+    <!-- Středová karta menu posunutá nad šachovnici -->
+    <VBox alignment="CENTER" maxHeight="360.0" maxWidth="380.0" spacing="16.0" style="-fx-background-color: rgba(24, 12, 12, 0.78); -fx-background-radius: 16; -fx-border-color: rgba(255, 255, 255, 0.14); -fx-border-radius: 16; -fx-border-width: 1.5;">
+        <StackPane.margin>
+            <Insets bottom="140.0" />
+        </StackPane.margin>
+        <padding>
+            <Insets bottom="32.0" left="36.0" right="36.0" top="28.0" />
+        </padding>
+        <effect>
+            <DropShadow color="rgba(0, 0, 0, 0.7)" radius="26.0" spread="0.1" />
+        </effect>
 
-    <Button fx:id="gameBtn" maxWidth="260.0" onAction="#onLocalGameClick" style="-fx-background-color: #81b64c; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 12; -fx-cursor: hand;" text="Hrát" />
+        <VBox alignment="CENTER" spacing="4.0">
+            <Label style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: white;" text="JAVA CHESS">
+            <font>
+               <Font size="36.0" />
+            </font></Label>
+        </VBox>
 
-    <Button fx:id="exitBtn" maxWidth="260.0" onAction="#onExitClick" style="-fx-background-color: #c93430; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 12; -fx-cursor: hand;" text="Ukončit hru" />
-</VBox>
+        <Region prefHeight="6.0" />
+
+        <!-- Tlačítko Hrát -->
+        <Button fx:id="gameBtn" maxWidth="260.0" onAction="#onLocalGameClick" style="-fx-background-color: #81b64c; -fx-background-radius: 10; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 13 24 13 24; -fx-cursor: hand;" text="Hrát">
+            <effect>
+                <DropShadow color="rgba(0, 0, 0, 0.4)" offsetY="3.0" radius="6.0" />
+            </effect>
+        </Button>
+
+        <!-- Tlačítko Ukončit hru -->
+        <Button fx:id="exitBtn" maxWidth="260.0" onAction="#onExitClick" style="-fx-background-color: rgba(58, 42, 42, 0.9); -fx-background-radius: 10; -fx-border-color: rgba(255,255,255,0.12); -fx-border-radius: 10; -fx-text-fill: #ece0e0; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 11 24 11 24; -fx-cursor: hand;" text="Ukončit hru" />
+    </VBox>
+</StackPane>

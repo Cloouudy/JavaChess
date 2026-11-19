@@ -7,10 +7,10 @@
 
 <HBox prefHeight="720.0" prefWidth="1063.0" style="-fx-background-color: #302e2b;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameController">
 
-    <!-- LEVÁ ČÁST: Kontejner pro kolegovu šachovnici -->
+    <!-- LEVÁ ČÁST: Container pro šachovnici -->
     <StackPane fx:id="boardContainer" maxHeight="1000.0" maxWidth="1000.0" minHeight="350.0" minWidth="350.0" style="-fx-padding: 20;" HBox.hgrow="ALWAYS" />
 
-    <!-- PRAVÁ ČÁST: Boční panel s hráči, tahy a ovládáním -->
+    <!-- PRAVÁ ČÁST: Boční panel s hráči, tahy -->
     <VBox maxHeight="-Infinity" prefHeight="700.0" prefWidth="320.0" spacing="15.0" style="-fx-background-color: #262421;">
         <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

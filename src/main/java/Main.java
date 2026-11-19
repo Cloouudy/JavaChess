@@ -11,6 +11,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/MainMenu.fxml"));
         primaryStage.setTitle("Java Chess");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

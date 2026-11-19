@@ -21,6 +21,7 @@ public class MainMenuController {
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(gameRoot));
+        stage.setResizable(true);
         stage.centerOnScreen();
 
 
