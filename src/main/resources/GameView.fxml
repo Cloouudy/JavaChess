@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox prefHeight="720.0" prefWidth="1063.0" style="-fx-background-color: #302e2b;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameController">
+
+    <!-- LEVÁ ČÁST: Kontejner pro kolegovu šachovnici -->
+    <StackPane fx:id="boardContainer" maxHeight="1000.0" maxWidth="1000.0" minHeight="350.0" minWidth="350.0" style="-fx-padding: 20;" HBox.hgrow="ALWAYS" />
+
+    <!-- PRAVÁ ČÁST: Boční panel s hráči, tahy a ovládáním -->
+    <VBox maxHeight="-Infinity" prefHeight="700.0" prefWidth="320.0" spacing="15.0" style="-fx-background-color: #262421;">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        </padding>
+
+        <Label fx:id="blackPlayerLabel" text="Černý hráč" textFill="#bababa">
+            <font><Font name="System Bold" size="16.0" /></font>
+        </Label>
+
+        <Label fx:id="statusLabel" text="Na tahu: Bílý" textFill="#81b64c">
+            <font><Font name="System Bold" size="15.0" /></font>
+        </Label>
+
+        <!-- Seznam tahů -->
+        <ListView fx:id="moveHistoryList" prefHeight="498.0" prefWidth="280.0" style="-fx-control-inner-background: #302e2b; -fx-background-color: #302e2b;" VBox.vgrow="ALWAYS" />
+
+        <Label fx:id="whitePlayerLabel" text="Bílý hráč" textFill="WHITE">
+            <font><Font name="System Bold" size="16.0" /></font>
+        </Label>
+
+        <HBox spacing="10.0">
+            <Button fx:id="resignButton" maxWidth="Infinity" onAction="#onResignClick" style="-fx-background-color: #81b64c; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Vzdát se (Bílý)" HBox.hgrow="ALWAYS" />
+            <Button maxWidth="Infinity" onAction="#onBackToMenuClick" style="-fx-background-color: #454341; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Menu" HBox.hgrow="ALWAYS" />
+        </HBox>
+    </VBox>
+</HBox>

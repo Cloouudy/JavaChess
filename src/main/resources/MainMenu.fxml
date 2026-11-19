@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" prefHeight="660.0" prefWidth="960.0" spacing="20.0" style="-fx-background-color: #302e2b;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainMenuController">
+    <padding>
+        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+    </padding>
+
+          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="228.0" prefWidth="508.0" text="JAVA CHESS" textFill="WHITE">
+        <font>
+            <Font name="System Bold" size="42.0" />
+        </font>
+    </Label>
+
+    <Button fx:id="gameBtn" maxWidth="260.0" onAction="#onLocalGameClick" style="-fx-background-color: #81b64c; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 12; -fx-cursor: hand;" text="Hrát" />
+
+    <Button fx:id="exitBtn" maxWidth="260.0" onAction="#onExitClick" style="-fx-background-color: #c93430; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 12; -fx-cursor: hand;" text="Ukončit hru" />
+</VBox>
