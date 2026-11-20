@@ -9,14 +9,14 @@ import java.io.IOException;
 
 public class MainMenuController {
 
-
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/GameView.fxml"));
 
     @FXML
     private void onLocalGameClick(ActionEvent event) throws IOException {
 
 
         // Nacteni FXML souboru
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GameView.fxml"));
+
         Parent gameRoot = loader.load();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

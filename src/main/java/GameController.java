@@ -163,7 +163,7 @@ public class GameController {
 
     // Resign button
     @FXML
-    private void onResignClick() throws Exception{
+    private void onResignClick() throws Exception {
         System.out.println("Resign");
         resign = true;
 
@@ -408,6 +408,9 @@ public class GameController {
         boolean hasLegalMove = hasAnyLegalMove(isOnMove);
         String sideToMove = isOnMove ? "Bílý" : "Černý";
 
+
+
+        //  checkmate a stalemate
         if (!hasLegalMove) {
             gameOver = true;
             if (inCheck) {
@@ -420,6 +423,7 @@ public class GameController {
             return;
         }
 
+        // material check
         if (isInsufficientMaterial()) {
             gameOver = true;
             gameResult = "1/2-1/2";
@@ -427,10 +431,11 @@ public class GameController {
             return;
         }
 
+        // resign
         if (resign) {
             gameOver = true;
             gameResult = isOnMove ? "0-1" : "1-0";
-            statusLabel.setText(sideToMove + " Vyhrál - oponent rezignoval");
+            statusLabel.setText(sideToMove + " rezignoval");
             return;
         }
 
@@ -686,7 +691,6 @@ public class GameController {
         return row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE;
     }
 
-    // Zde si muzes zmenit barvy policek ve stylu Chess.com (#eeeed2 a #769656)
     private void refreshBoard() {
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int col = 0; col < BOARD_SIZE; col++) {
@@ -725,13 +729,13 @@ public class GameController {
 
         if (legalHighlights[row][col]) {
             ImageView dotView = new ImageView(moveDotImage);
-            // Pokud jde o braní soupeřovy figurky, může být ikona větší (např. kroužek kolem figurky), jinak malá tečka uprostřed
+
             double scale = captureHighlights[row][col] ? 0.90 : 0.5;
             dotView.setFitWidth(currentTileSize * scale);
             dotView.setFitHeight(currentTileSize * scale);
             dotView.setPreserveRatio(true);
             dotView.setSmooth(true);
-            dotView.setMouseTransparent(true); // Kliknutí projde skrz obrázek rovnou na políčko
+            dotView.setMouseTransparent(true);
             square.getChildren().add(dotView);
         }
         
